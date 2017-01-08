@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/fabio/exercism/ruby/roman-numerals'
+let g:netrw_dirhist_2='/Users/fabio/exercism/ruby'
+let g:netrw_dirhist_3='/Users/fabio/exercism'
+let g:netrw_dirhist_4='/Users/fabio'
+let g:netrw_dirhist_5='/Users'
+let g:netrw_dirhist_6='/Users/fabio'
