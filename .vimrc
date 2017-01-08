@@ -38,9 +38,50 @@ call plug#end()
 
 syntax on
 set background=dark
+colorscheme hybrid
+
 set number
 set ruler
-colorscheme hybrid
+" Highlight current line
+set cursorline
+" Define tab size
+set tabstop=2
+" Show invisible characters
+" set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+" set list
+" Highlight searches
+" set hlsearch
+" Ignore case of searches
+set ignorecase
+" Highlight dynamically as pattern is typed
+set incsearch
+" Always show status line
+set laststatus=2
+" Enable mouse in all modes
+set mouse=a
+" Don't show the intro message when starting vim
+set shortmess=atI
+" Show current mode
+set showmode
+" Show the partial command as it is being typed
+set showcmd
+" Show the file name in the title bar
+set title
+" Centralize backups, swapfiles and undo history
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+if exists("&undodir")
+	set undodir=~/.vim/undo
+endif
+" Set automatic commands
+if has("autocmd")
+				" Enable filetype detection
+				filetype on
+				" Treat json files as js
+				autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+				" Treat md file as markdown
+				autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+endif
 
 nmap :NT :NERDTree<CR>
 nmap :r :!ruby %<CR>
