@@ -10,7 +10,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'tpope/vim-bundler'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -97,3 +99,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
+
+" Vim airline bar
+let g:airline#extensions#tabline#enabled = 1

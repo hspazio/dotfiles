@@ -13,8 +13,9 @@ brew install coreutils
 
 # install other tools
 brew install vim --with-override-system-vi
-
-
+brew cask install iterm2
+brew install zsh
+brew install zsh-completions
 
 # remove outdated version from the cellar
 brew cleanup
