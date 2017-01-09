@@ -1,6 +1,6 @@
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-PATH=$PATH:/usr/local/sbin
 
+PATH=$PATH:/usr/local/sbin:/$HOME/.bin:/usr/local/mysql/bin
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.

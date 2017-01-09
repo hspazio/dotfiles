@@ -1,8 +1,18 @@
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/fabio/.oh-my-zsh
+export ZSH=/$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.

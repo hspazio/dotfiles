@@ -11,6 +11,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'elixir-lang/vim-elixir'
@@ -34,7 +36,6 @@ filetype plugin indent on    " required
 " " Put your non-Plugin stuff after this line
 "
 execute pathogen#infect()
-filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
 Plug 'scwood/vim-hybrid'
@@ -50,6 +51,8 @@ set ruler
 set cursorline
 " Define tab size
 set tabstop=2
+" enable backspace button
+set backspace=indent,eol,start
 " Show invisible characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
