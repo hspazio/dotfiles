@@ -6,10 +6,10 @@
 brew update
 
 # upgrade any installed formulae
-brew upgrade
+#brew upgrade
 
 # install GNU core utilities
-brew install coreutils
+#brew install coreutils
 
 # install other tools
 brew install vim --with-override-system-vi

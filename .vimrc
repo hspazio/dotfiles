@@ -9,6 +9,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'elixir-lang/vim-elixir'

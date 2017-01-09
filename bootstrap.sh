@@ -4,6 +4,8 @@ cd "$(dirname "${BASH_SOURCE}")";
 
 git pull origin master;
 
+git clone https://github.com/VundleVim/Vundle.vim.git ~/dotfiles/.vim/bundle/Vundle.vim
+
 function doIt() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
