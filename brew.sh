@@ -17,5 +17,9 @@ brew cask install iterm2
 brew install zsh
 brew install zsh-completions
 
+# installing oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+
 # remove outdated version from the cellar
 brew cleanup
