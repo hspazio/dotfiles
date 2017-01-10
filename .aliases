@@ -1,1 +1,4 @@
 alias ls='ls -GFh'
+
+# Perforce
+alias p4p='p4 changes -s pending -c $P4CLIENT' 
