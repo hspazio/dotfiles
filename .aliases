@@ -1,4 +1,29 @@
 alias ls='ls -GFh'
 
 # Perforce
-alias p4p='p4 changes -s pending -c $P4CLIENT' 
+pending_changelists() {
+  p4 changes -s pending -c $P4CLIENT
+}
+
+sync_branch() {
+  p4 sync --parallel=0 "$WD_REPOSITORY/$1/..."#head
+}
+
+release() {
+  p4 integrate "$WD_REPOSITORY/trunk/..." "$WD_REPOSITORY/release/..."
+}
+
+rebase() {
+  p4 integrate "$WD_REPOSITORY/trunk/..." "$WD_REPOSITORY/branches/$1/..."
+}
+
+branch() {
+  p4 populate -o "$WD_REPOSITORY/trunk/..." "$WD_REPOSITORY/branches/$1/..."
+}
+
+alias p4pending=pending_changelists
+alias p4sync=sync_branch             # trunk | release | branch/<name>
+alias p4rebase=rebase                # <branch_name>
+alias p4branch=branch                # <branch_name>
+alias p4revert='p4 revert -a -c'     # default | <changelist>
+alias p4resolve='p4 -as -c'          # default | <changelist>

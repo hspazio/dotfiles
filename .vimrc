@@ -1,6 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
+" set encoding=utf-8
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -13,7 +13,8 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'tpope/vim-bundler'
@@ -90,6 +91,8 @@ if has("autocmd")
 				autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 
+" Execute current file
+noremap <F9> :!%:p<CR>
 nmap :NT :NERDTree<CR>
 nmap :r :!ruby %<CR>
 nmap :ff :CtrlP<CR>
@@ -107,3 +110,5 @@ let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 
 " Vim airline bar
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='dark'
+let g:airline_powerline_fonts = 1

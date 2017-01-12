@@ -20,6 +20,10 @@ brew install zsh-completions
 # installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# installing powerline fonts
+git https://github.com/powerline/fonts.git
+./fonts/install.sh
+rm -rf fonts
 
 # remove outdated version from the cellar
 brew cleanup
