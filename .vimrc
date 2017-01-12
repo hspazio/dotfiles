@@ -92,18 +92,34 @@ if has("autocmd")
 endif
 
 " Execute current file
+let mapleader=","
+nmap ; :
 noremap <F9> :!%:p<CR>
-nmap :NT :NERDTree<CR>
+nmap :nt :NERDTree<CR>
 nmap :r :!ruby %<CR>
 nmap :ff :CtrlP<CR>
+noremap <Leader>f :bn<CR>
+noremap <Leader>b :bp<CR>
+noremap <Leader>l :ls<CR>
+noremap <Leader>1 :1b<CR>
+noremap <Leader>2 :2b<CR>
+noremap <Leader>3 :3b<CR>
+noremap <Leader>4 :4b<CR>
+noremap <Leader>5 :5b<CR>
+noremap <Leader>6 :6b<CR>
+noremap <Leader>7 :7b<CR>
+noremap <Leader>8 :8b<CR>
+noremap <Leader>9 :9b<CR>
+noremap <Leader>0 :0b<CR>
 
 " Syntastic 
+" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
