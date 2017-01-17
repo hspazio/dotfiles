@@ -19,8 +19,10 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'tpope/vim-bundler'
+Plugin 'nfvs/vim-perforce'
 call vundle#end()            " required
 
 
@@ -166,6 +168,11 @@ noremap <Leader>7 :7b<CR>
 noremap <Leader>8 :8b<CR>
 noremap <Leader>9 :9b<CR>
 noremap <Leader>0 :0b<CR>
+" Move around splits
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 " Syntastic 
 " let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
@@ -184,6 +191,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark'
 let g:airline_powerline_fonts = 1
 
+" Perforce
+let g:perforce_open_on_change = 1  " open file for edit automatically
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
