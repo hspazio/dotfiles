@@ -121,6 +121,7 @@ colorscheme hybrid
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set number
 set ruler
+set relativenumber
 " Highlight current line
 set cursorline
 " Show invisible characters
