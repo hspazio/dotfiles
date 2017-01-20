@@ -169,6 +169,7 @@ noremap <Leader>7 :7b<CR>
 noremap <Leader>8 :8b<CR>
 noremap <Leader>9 :9b<CR>
 noremap <Leader>0 :0b<CR>
+noremap :bda :bufdo bd<cr>
 " Move around splits
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
