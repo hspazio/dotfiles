@@ -49,7 +49,7 @@ set autoindent
 set laststatus=2
 set showmatch
 set incsearch
-set hlsearch
+set nohlsearch
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 " highlight current line
@@ -175,7 +175,6 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-
 " Syntastic 
 " let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 set statusline+=%#warningmsg#
@@ -234,3 +233,10 @@ augroup vimrcEx
   " indent slim two spaces, not four
   autocmd! FileType *.slim set sw=2 sts=2 et
 augroup END
+
+function! Relpath(filename)
+  let cwd = getcwd()
+  let s = substitute(a:filename, l:cwd . "/" , "", "")
+  return s
+endfunction
+
