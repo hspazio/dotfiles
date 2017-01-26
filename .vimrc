@@ -24,6 +24,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'tpope/vim-bundler'
 Plugin 'nfvs/vim-perforce'
+Plugin 'valloric/youcompleteme'
 call vundle#end()            " required
 
 
@@ -50,7 +51,7 @@ set autoindent
 set laststatus=2
 set showmatch
 set incsearch
-set nohlsearch
+" set hlsearch
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 " highlight current line
@@ -170,12 +171,12 @@ noremap <Leader>7 :7b<CR>
 noremap <Leader>8 :8b<CR>
 noremap <Leader>9 :9b<CR>
 noremap <Leader>0 :0b<CR>
-noremap :bda :bufdo bd<cr>
 " Move around splits
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
 " Syntastic 
 " let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 set statusline+=%#warningmsg#
@@ -235,9 +236,24 @@ augroup vimrcEx
   autocmd! FileType *.slim set sw=2 sts=2 et
 augroup END
 
-function! Relpath(filename)
-  let cwd = getcwd()
-  let s = substitute(a:filename, l:cwd . "/" , "", "")
-  return s
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
 endfunction
-
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
+ "
+ "
+ "
+ "
+ "
+ "
+ "
