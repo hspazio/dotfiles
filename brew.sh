@@ -19,7 +19,7 @@ brew install zsh-completions
 brew install ack
 # installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # installing powerline fonts
 git clone https://github.com/powerline/fonts.git
 ./fonts/install.sh

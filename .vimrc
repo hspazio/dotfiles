@@ -24,7 +24,8 @@ Plugin 'tpope/vim-rails'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'tpope/vim-bundler'
 Plugin 'nfvs/vim-perforce'
-Plugin 'valloric/youcompleteme'
+" Plugin 'valloric/youcompleteme'
+Plugin 'rizzatti/dash.vim'
 call vundle#end()            " required
 
 
