@@ -12,20 +12,23 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
 Plugin 'VundleVim/Vundle.vim'
+" display
 Plugin 'w0ng/vim-hybrid'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'ctrlpvim/ctrlp.vim'
-"Plugin 'wincent/command-t'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+" navigation and files
+Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'nfvs/vim-perforce'
+" ruby
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
-Plugin 'elixir-lang/vim-elixir'
 Plugin 'tpope/vim-bundler'
-Plugin 'nfvs/vim-perforce'
-" Plugin 'valloric/youcompleteme'
-Plugin 'rizzatti/dash.vim'
+" elixir
+Plugin 'elixir-lang/vim-elixir'
+" misc
+Plugin 'valloric/youcompleteme'
 call vundle#end()            " required
 
 
