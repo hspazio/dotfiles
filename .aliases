@@ -1,4 +1,5 @@
 alias ls='ls -GFh'
+alias ctags="`brew --prefix`/bin/ctags"
 
 # Perforce
 resolve_default() {

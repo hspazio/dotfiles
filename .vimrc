@@ -17,14 +17,18 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " navigation and files
+Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nfvs/vim-perforce'
+Plugin 'kana/vim-textobj-user'
 " ruby
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
+Plugin 'tpope/rbenv-ctags'
+Plugin 'nelstrom/vim-textobj-rubyblock'
 " elixir
 Plugin 'elixir-lang/vim-elixir'
 " misc
@@ -39,6 +43,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scwood/vim-hybrid'
 call plug#end()
 
+runtime macros/matchit.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,7 +119,6 @@ set autoread
 " introduced in Vim 7.3.969). The Ruby syntax highlighting is significantly
 " slower with the new regex engine.
 set re=1
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
@@ -200,6 +204,10 @@ let g:airline_powerline_fonts = 1
 
 " Perforce
 let g:perforce_open_on_change = 1  " open file for edit automatically
+
+" Make CtrlP using Silver Searcher for listing files.
+let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_use_caching = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
