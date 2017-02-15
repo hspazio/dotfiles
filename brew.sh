@@ -38,5 +38,9 @@ git clone https://github.com/powerline/fonts.git
 ./fonts/install.sh
 rm -rf fonts
 
+# installing ruby analyzers
+gem install flog
+gem install rubocop
+
 # remove outdated version from the cellar
 brew cleanup

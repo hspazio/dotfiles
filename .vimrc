@@ -194,8 +194,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'flog']
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
+let g:syntastic_ruby_flog_exec = '~/.rbenv/shims/flog'
 
 " Vim airline bar
 let g:airline#extensions#tabline#enabled = 1
