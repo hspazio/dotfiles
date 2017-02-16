@@ -33,6 +33,8 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'elixir-lang/vim-elixir'
 " misc
 Plugin 'valloric/youcompleteme'
+Plugin 'rizzatti/dash.vim'
+
 call vundle#end()            " required
 
 
@@ -165,7 +167,8 @@ nmap ; :
 noremap <F9> :!%:p<CR>
 nmap :nt :NERDTree<CR>
 nmap :r :!ruby %<CR>
-nmap :ff :CtrlP<CR>
+noremap <Leader>t :w<cr>:!bundle exec rake test<cr>
+
 noremap <Leader>f :bn<CR>
 noremap <Leader>b :bp<CR>
 noremap <Leader>l :ls<CR>
@@ -196,6 +199,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'flog']
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
+let g:syntastic_ruby_rubocop_args = '~/.rubocop.yml'
 let g:syntastic_ruby_flog_exec = '~/.rbenv/shims/flog'
 
 " Vim airline bar

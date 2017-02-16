@@ -1,0 +1,49 @@
+AllCops:
+  TargetRubyVersion: 2.2
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'app/assets/**/*'
+    - 'app/views/**/*'
+    - 'test/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - Gemfile
+    - !ruby/regexp /old_and_unused\.rb$/
+
+Metrics/LineLength:
+  Max: 120
+Style/AsciiComments:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/EndOfLine:
+  Enabled: false
+Style/SingleLineBlockParams:
+  Enabled: false
+Style/TrailingBlankLines:
+  Enabled: false   # I think we have seen this more annoying than useful
+Style/TrailingWhitespace:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Style/MultilineMethodCallIndentation:
+  Enabled: false   # not working correctly, makes the code to look messy in certain scenarios
+Style/Lambda:
+  Enabled: false   # new lambda syntax is always preferred over old one
+Style/RedundantSelf:
+  Enabled: false   # self is required when accessing table attributes for the first time as AR
+                   # does a dynamic lookup on the table and defines the methods at runtime.
+                   # If we remove it (as suggested by Rubocop) it can cause an error.
+Style/RegexpLiteral:
+  Enabled: false   # using %r around regex allows us to automatically escape '/' without using
+                   # backslash. Although it can be handy in some cases it should not be enforced by
+                   # Rubocop. E.g. when using Regex test tools we need to remember then to remove
+                   # all backslashes, not very handy in this case.
+Style/WordArray:
+  Enabled: false   # this is not always a good rule. Especially when we have an array that can
+                   # change into array of strings containing white spaces we are then forced also to
+                   # change the syntax of the whole array.
