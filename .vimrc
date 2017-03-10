@@ -168,6 +168,7 @@ noremap <F9> :!%:p<CR>
 nmap :nt :NERDTree<CR>
 nmap :r :!ruby %<CR>
 noremap <Leader>t :w<cr>:!bundle exec rake test<cr>
+noremap <Leader>c :!flog %<cr>
 
 noremap <Leader>f :bn<CR>
 noremap <Leader>b :bp<CR>
