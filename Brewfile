@@ -74,3 +74,4 @@ brew 'wget'
 brew 'wine'
 
 cask 'iterm2'
+cask 'macdown'
