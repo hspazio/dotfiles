@@ -17,6 +17,7 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " navigation and files
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -147,6 +148,7 @@ set shortmess=atI
 set showmode
 " Show the file name in the title bar
 set title
+
 " Centralize backups, swapfiles and undo history
 " set backupdir=~/.vim/backups
 " set directory=~/.vim/swaps
@@ -155,12 +157,15 @@ if exists("&undodir")
 endif
 " Set automatic commands
 if has("autocmd")
-				" Enable filetype detection
-				filetype on
-				" Treat json files as js
-				autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-				" Treat md file as markdown
-				autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+  " Enable filetype detection
+  filetype on
+  " Treat json files as js
+  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " Treat md file as markdown
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+
+  " automatically rebalance windows on vim resize
+  autocmd VimResized * :wincmd =
 endif
 
 nmap ; :
@@ -190,7 +195,6 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Syntastic 
-" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -220,7 +224,6 @@ let g:ctrlp_use_caching = 0
 augroup vimrcEx
   " Clear all autocmds in the group
   autocmd!
-  autocmd FileType text setlocal textwidth=78
   " Jump to last cursor position unless it's invalid or in an event handler
   autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
