@@ -19,7 +19,6 @@ Plugin 'vim-airline/vim-airline-themes'
 " navigation and files
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nfvs/vim-perforce'
@@ -170,7 +169,6 @@ endif
 
 nmap ; :
 noremap <F9> :!%:p<CR>
-nmap :nt :NERDTree<CR>
 nmap :r :!ruby %<CR>
 noremap <Leader>t :w<cr>:!bundle exec rake test<cr>
 noremap <Leader>c :!flog %<cr>
