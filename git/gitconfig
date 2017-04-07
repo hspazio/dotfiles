@@ -4,3 +4,6 @@
 [alias]
 	sla = log --oneline --decorate --graph --all
 	slog = log --pretty=format:'%C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(green)%an%C(reset) %s'
+	car = commit --amend --no-edit
+	unstage = reset
+	uncommit = reset --soft HEAD^
