@@ -2,8 +2,9 @@ require 'rake'
 
 desc "Link dotfiles into $HOME and run basic installation"
 task :link do
-  link_file(from: 'tmux/tmux.conf', to: '.tmux.conf')
+  link_file(from: 'git/gitconfig', to: '.gitconfig')
   link_file(from: 'ruby/rubocop.yml', to: 'rubocop.yml')
+  link_file(from: 'tmux/tmux.conf', to: '.tmux.conf')
   link_file(from: 'vim/vimrc', to: '.vimrc')
   link_file(from: 'zsh/zshrc', to: '.zshrc')
 
