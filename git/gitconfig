@@ -1,6 +1,8 @@
 [user]
 	name = hspazio
 	email = pitinofabio@gmail.com
+[credential "https://stash.ges.symantec.com"]
+	helper = symantec-stash -a
 [alias]
   aa = add --all
   b = branch
