@@ -1,22 +1,22 @@
 [user]
-	name = hspazio
-	email = pitinofabio@gmail.com
+  name = hspazio
+  email = pitinofabio@gmail.com
 [credential "https://stash.ges.symantec.com"]
-	helper = symantec-stash -a
+  helper = symantec-stash -a
 [alias]
   aa = add --all
   b = branch
-	car = commit --amend --no-edit
+  car = commit --amend --no-edit
   co = checkout
   dc = diff --word-diff --color-words --cached
   df = diff --word-diff --color-words
   glog = log -E -i --grep
   mup = !git checkout master && git pull && git checkout -
   s = status --short --branch
-	sla = log --oneline --decorate --graph --all
-	slog = log --pretty=format:'%C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(green)%an%C(reset) %s'
-	uncommit = reset --soft HEAD^
-	unstage = reset
+  sla = log --oneline --decorate --graph --all
+  slog = log --pretty=format:'%C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(green)%an%C(reset) %s'
+  uncommit = reset --soft HEAD^
+  unstage = reset
 [color]
   ui = true
 [core]
