@@ -19,7 +19,7 @@ namespace :install do
   desc "Install vim"
   task :vim do
     puts "Installing Vundle"
-    system %Q{ git clone https://github.com/VundleVim/Vundle.vim.git ~/dotfiles/.vim/bundle/Vundle.vim }
+    system %Q{ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim }
 
     puts "Installing powerline fonts for Vim..."
     system %Q{ git clone https://github.com/powerline/fonts.git }

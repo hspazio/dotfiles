@@ -38,14 +38,7 @@ Plugin 'rizzatti/dash.vim'
 
 call vundle#end()            " required
 
-
 filetype plugin indent on    " required
-execute pathogen#infect()
-
-call plug#begin('~/.vim/plugged')
-Plug 'scwood/vim-hybrid'
-call plug#end()
-
 runtime macros/matchit.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
