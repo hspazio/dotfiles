@@ -154,7 +154,7 @@ if has("autocmd")
   " Treat json files as js
   autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
   " Treat md file as markdown
-  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown 
 
   " automatically rebalance windows on vim resize
   autocmd VimResized * :wincmd =
@@ -164,6 +164,7 @@ nmap ; :
 noremap <F9> :!%:p<CR>
 nmap :r :!ruby %<CR>
 noremap <Leader>t :w<cr>:!bundle exec rake test<cr>
+noremap <Leader>er :!elixir %<cr>
 noremap <Leader>c :!flog %<cr>
 
 noremap <Leader>f :bn<CR>
