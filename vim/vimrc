@@ -19,6 +19,7 @@ Plugin 'vim-airline/vim-airline-themes'
 " navigation and files
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-fugitive'
+Plugin 'christoomey/vim-conflicted'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nfvs/vim-perforce'
