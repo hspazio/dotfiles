@@ -1,5 +1,5 @@
 [user]
-  name = hspazio
+	name = Fabio Pitino
   email = pitinofabio@gmail.com
 [credential "https://stash.ges.symantec.com"]
   helper = symantec-stash -a
