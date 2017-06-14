@@ -19,6 +19,7 @@ Plugin 'vim-airline/vim-airline-themes'
 " navigation and files
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-fugitive'
+Plugin 'christoomey/vim-conflicted'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nfvs/vim-perforce'
@@ -198,10 +199,10 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'flog']
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
-let g:syntastic_ruby_rubocop_args = '~/.rubocop.yml'
+let g:syntastic_ruby_rubocop_args = '-c ~/rubocop.yml'
 let g:syntastic_ruby_flog_exec = '~/.rbenv/shims/flog'
 
 " Vim airline bar
