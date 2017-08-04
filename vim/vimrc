@@ -24,6 +24,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nfvs/vim-perforce'
 Plugin 'kana/vim-textobj-user'
+Plugin 'majutsushi/tagbar'
 " ruby
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
@@ -32,6 +33,8 @@ Plugin 'tpope/rbenv-ctags'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 " elixir
 Plugin 'elixir-lang/vim-elixir'
+" go
+Plugin 'fatih/vim-go'
 " misc
 Plugin 'tpope/vim-commentary'
 Plugin 'valloric/youcompleteme'
@@ -168,6 +171,7 @@ nmap :r :!ruby %<CR>
 noremap <Leader>t :w<cr>:!bundle exec rake test<cr>
 noremap <Leader>er :!elixir %<cr>
 noremap <Leader>c :!flog %<cr>
+noremap <Leader>g :GoRun<CR>
 
 noremap <Leader>f :bn<CR>
 noremap <Leader>b :bp<CR>
@@ -232,6 +236,7 @@ augroup vimrcEx
   "for ruby, autoindent with two spaces, always expand tabs
   autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
   autocmd FileType python set sw=4 sts=4 et
+  autocmd FileType go set sw=4 sts=4 et
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass 
 
