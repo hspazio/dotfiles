@@ -3,3 +3,10 @@
 # export LSCOLORS=ExFxBxDxCxegedabagacad
 
 export EDITOR='vim'
+
+# setting up Go
+mkdir -p $HOME/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+mkdir -p $GOPATH/src/github.com/hspazio
+

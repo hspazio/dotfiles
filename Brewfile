@@ -29,6 +29,9 @@ brew 'rbenv'
 # Python
 brew 'python'
 
+# Go
+brew 'go'
+
 # JS
 brew 'node'
 
