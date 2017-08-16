@@ -68,6 +68,13 @@ namespace :install do
       system %Q{ gem install #{gem} }
     end
   end
+
+  desc "Install Node.js"
+  task :nodejs do
+    system %Q{curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash}
+    system %Q{source ~/.zshrc}
+    system %Q{nvm install node}
+  end
 end
 
 def link_file(from:, to:)

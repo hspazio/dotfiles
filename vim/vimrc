@@ -171,7 +171,7 @@ nmap :r :!ruby %<CR>
 noremap <Leader>t :w<cr>:!bundle exec rake test<cr>
 noremap <Leader>er :!elixir %<cr>
 noremap <Leader>c :!flog %<cr>
-noremap <Leader>g :GoRun<CR>
+noremap <Leader>G :GoRun<CR>
 
 noremap <Leader>f :bn<CR>
 noremap <Leader>b :bp<CR>
