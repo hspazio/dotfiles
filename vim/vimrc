@@ -35,11 +35,13 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'elixir-lang/vim-elixir'
 " go
 Plugin 'fatih/vim-go'
+" javascript
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
 " misc
 Plugin 'tpope/vim-commentary'
 Plugin 'valloric/youcompleteme'
-Plugin 'rizzatti/dash.vim'
-
+Plugin 'raimondi/delimitmate'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -208,6 +210,8 @@ let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'flog']
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 let g:syntastic_ruby_rubocop_args = '-c ~/rubocop.yml --force-exclusion'
 let g:syntastic_ruby_flog_exec = '~/.rbenv/shims/flog'
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_jshint_args = '--config ~/.jshintrc'
 
 " Vim airline bar
 let g:airline#extensions#tabline#enabled = 1
