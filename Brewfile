@@ -38,6 +38,7 @@ brew 'node'
 # Database
 brew 'mysql', restart_service: true
 brew 'sqlite'
+brew 'mongodb'
 
 brew 'autoconf'
 brew 'cscope'
