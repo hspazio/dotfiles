@@ -38,6 +38,7 @@ Plugin 'fatih/vim-go'
 " javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
 " misc
 Plugin 'tpope/vim-commentary'
 Plugin 'valloric/youcompleteme'
