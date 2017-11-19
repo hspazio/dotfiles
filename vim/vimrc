@@ -189,8 +189,10 @@ noremap <Leader>9 :9b<CR>
 noremap <Leader>0 :0b<CR>
 
 " copy/paste between vim instances
-vmap <Leader>y "+yy<cr>
-nmap <Leader>p "+p<cr>
+vmap <leader>y :w! /tmp/vitmp<CR>
+nmap <leader>p :r! cat /tmp/vitmp<CR>
+" vmap <Leader>y "+yy<cr>
+" nmap <Leader>p "+p<cr>
 
 " Move around splits
 nnoremap <c-j> <c-w>j
