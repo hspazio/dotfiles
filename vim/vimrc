@@ -14,6 +14,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " display
 Plugin 'w0ng/vim-hybrid'
+Plugin 'fatih/molokai'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " navigation and files
@@ -36,6 +37,7 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'elixir-lang/vim-elixir'
 " go
 Plugin 'fatih/vim-go'
+Plugin 'SirVer/ultisnips'
 " javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
@@ -129,6 +131,7 @@ set re=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
 colorscheme hybrid
+" colorscheme molokai
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM SETTINGS - fabio
@@ -171,11 +174,6 @@ endif
 
 nmap ; :
 noremap <F9> :!%:p<CR>
-nmap :r :!ruby %<CR>
-noremap <Leader>t :w<cr>:!bundle exec rake test<cr>
-noremap <Leader>er :!elixir %<cr>
-noremap <Leader>gr :!go run %<cr>
-noremap <Leader>c :!flog % -a<cr>
 noremap <Leader>> :GitNextConflict<cr>
 noremap <Leader>f :bn<CR>
 noremap <Leader>b :bp<CR>
@@ -191,11 +189,15 @@ noremap <Leader>8 :8b<CR>
 noremap <Leader>9 :9b<CR>
 noremap <Leader>0 :0b<CR>
 
+" Move in quickfix list
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+" Close quickfix list
+nnoremap <leader>a :cclose<CR>
+
 " copy/paste between vim instances
 vmap <leader>y :w! /tmp/vitmp<CR>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
-" vmap <Leader>y "+yy<cr>
-" nmap <Leader>p "+p<cr>
 
 " Move around splits
 nnoremap <c-j> <c-w>j
@@ -218,6 +220,17 @@ let g:syntastic_ruby_flog_exec = '~/.rbenv/shims/flog'
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_jshint_args = '--config ~/.jshintrc'
 
+" Go
+let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+
 " Vim airline bar
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark'
@@ -229,6 +242,21 @@ let g:perforce_open_on_change = 1  " open file for edit automatically
 " Make CtrlP using Silver Searcher for listing files.
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
+
+" colorscheme
+let g:rehash256 = 1
+let g:molokai_original = 1
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -241,18 +269,27 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 
-  "for ruby, autoindent with two spaces, always expand tabs
+  " Ruby
   autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+  autocmd FileType ruby,eruby nmap <leader>r :!ruby %<CR>
+  autocmd FileType ruby,eruby nmap <leader>t :w<CR>:!bundle exec rake test<CR>
+  autocmd FileType ruby,eruby nmap <leader>c :!flog % -a<CR>
+
+  " Go
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+  autocmd FileType go nmap <leader>b  <Plug>(go-build)
+  autocmd FileType go nmap <leader>r  <Plug>(go-run)
+  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+  autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+
+  " Python
   autocmd FileType python set sw=4 sts=4 et
-  autocmd FileType go set sw=4 sts=4 et
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass 
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
-
-  " Indent p tags
-  " autocmd FileType html,eruby if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
 
   " Don't syntax highlight markdown because it's often wrong
   autocmd! FileType mkd setlocal syn=off
@@ -283,10 +320,41 @@ function! InsertTabWrapper()
 endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
- "
- "
- "
- "
- "
- "
- "
+
+" ==================== UltiSnips ====================
+ function! g:UltiSnips_Complete()
+   call UltiSnips#ExpandSnippet()
+   if g:ulti_expand_res == 0
+     if pumvisible()
+       return "\<C-n>"
+     else
+       call UltiSnips#JumpForwards()
+       if g:ulti_jump_forwards_res == 0
+         return "\<TAB>"
+       endif
+     endif
+   endif
+   return ""
+ endfunction
+
+ function! g:UltiSnips_Reverse()
+   call UltiSnips#JumpBackwards()
+   if g:ulti_jump_backwards_res == 0
+     return "\<C-P>"
+   endif
+
+   return ""
+ endfunction
+
+
+ if !exists("g:UltiSnipsJumpForwardTrigger")
+   let g:UltiSnipsJumpForwardTrigger = "<tab>"
+ endif
+
+ if !exists("g:UltiSnipsJumpBackwardTrigger")
+   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+ endif
+
+ au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+ au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+
