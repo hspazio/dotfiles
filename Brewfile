@@ -31,6 +31,7 @@ brew 'python'
 
 # Go
 brew 'go'
+brew 'dep'
 
 # JS
 brew 'node'
