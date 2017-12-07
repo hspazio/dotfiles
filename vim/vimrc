@@ -241,8 +241,9 @@ let g:airline_powerline_fonts = 1
 let g:perforce_open_on_change = 1  " open file for edit automatically
 
 " Make CtrlP using Silver Searcher for listing files.
-let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_user_command = 'ag --path-to-ignore ~/.ctrlpignore %s -l --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " colorscheme
 let g:rehash256 = 1
