@@ -42,6 +42,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'mxw/vim-jsx'
 " misc
 Plugin 'tpope/vim-commentary'
 Plugin 'valloric/youcompleteme'
@@ -257,6 +258,9 @@ function! s:build_go_files()
   endif
 endfunction
 
+" CtrlP ignores
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/node_modules/*,*/.git/*
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
