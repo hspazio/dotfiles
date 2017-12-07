@@ -25,3 +25,5 @@
   prune = true
 [push]
   default = upstream
+[rerere]
+	enabled = true
