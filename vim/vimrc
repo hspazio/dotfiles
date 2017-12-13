@@ -259,8 +259,10 @@ function! s:build_go_files()
 endfunction
 
 " CtrlP ignores
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-set wildignore+=*/node_modules/*,*/.git/*
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+" JSX
+let g:jsx_ext_required = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
