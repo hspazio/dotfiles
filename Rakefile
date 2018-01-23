@@ -6,6 +6,7 @@ task :link do
   link_file(from: 'ruby/rubocop.yml', to: 'rubocop.yml')
   link_file(from: 'tmux/tmux.conf', to: '.tmux.conf')
   link_file(from: 'vim/vimrc', to: '.vimrc')
+  link_file(from: 'vim/ctrlpignore', to: '.ctrlpignore')
   link_file(from: 'zsh/zshrc', to: '.zshrc')
   link_file(from: 'javascript/jshintrc', to: '.jshintrc')
 
