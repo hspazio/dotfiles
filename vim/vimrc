@@ -235,7 +235,7 @@ let g:go_metalinter_autosave = 1
 " Vim airline bar
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark'
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 
 " Perforce
 let g:perforce_open_on_change = 1  " open file for edit automatically
