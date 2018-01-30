@@ -45,6 +45,13 @@ namespace :install do
     system %Q{ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting }
   end
 
+  desc 'Install Tmux paxkages'
+  task :tmux do
+    puts 'Installing tmux packages...'
+    system %Q{ brew install tmux }
+    system %Q{ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm }
+  end
+
   desc "Install and setup ctags"
   task :ctags do
     puts "Setting up ctags..."
