@@ -1,6 +1,6 @@
 [user]
 	name = Fabio Pitino
-  email = pitinofabio@gmail.com
+	email = pitinofabio@gmail.com
 [credential "https://stash.ges.symantec.com"]
   helper = symantec-stash -a
 [alias]
@@ -17,6 +17,8 @@
   slog = log --pretty=format:'%C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(green)%an%C(reset) %s'
   uncommit = reset --soft HEAD^
   unstage = reset
+  arc = !git archive -o "$(basename `git rev-parse --show-toplevel`)-$(date +'%Y%m%d%H%M%S')-$(git rev-parse --short HEAD).zip" HEAD
+  cor = checkout --track
 [color]
   ui = true
 [core]
