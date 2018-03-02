@@ -45,6 +45,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
 " misc
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
 Plugin 'valloric/youcompleteme'
 Plugin 'raimondi/delimitmate'
 call vundle#end()            " required
