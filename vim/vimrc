@@ -166,8 +166,6 @@ if has("autocmd")
   filetype on
   " Treat json files as js
   autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-  " Treat md file as markdown
-  autocmd BufNewFile,BufRead *.md set filetype=markdown
 
   " automatically rebalance windows on vim resize
   autocmd VimResized * :wincmd =
@@ -249,6 +247,9 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:rehash256 = 1
 let g:molokai_original = 1
 
+" Markdown
+let g:markdown_fenced_languages = ['html', 'ruby', 'bash=sh', 'go', 'javascript']
+
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
@@ -302,6 +303,9 @@ augroup vimrcEx
 
   " Don't syntax highlight markdown because it's often wrong
   autocmd! FileType mkd setlocal syn=off
+  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
+  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
+  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
   " Leave the return key alone when in command line windows, since it's used
   " to run commands there.
