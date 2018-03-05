@@ -4,6 +4,7 @@ desc "Link dotfiles into $HOME and run basic installation"
 task :link do
   link_file(from: 'git/gitconfig', to: '.gitconfig')
   link_file(from: 'ruby/rubocop.yml', to: 'rubocop.yml')
+  link_file(from: 'ruby/irbrc', to: '.irbrc')
   link_file(from: 'tmux/tmux.conf', to: '.tmux.conf')
   link_file(from: 'vim/vimrc', to: '.vimrc')
   link_file(from: 'vim/ctrlpignore', to: '.ctrlpignore')
@@ -73,7 +74,7 @@ namespace :install do
   desc "Install Ruby tools"
   task :ruby_tools do
     puts "Installing Ruby static analysis tools..."
-    %w[flog rubocop].map do |gem| 
+    %w[flog rubocop interactive_editor].map do |gem| 
       system %Q{ gem install #{gem} }
     end
   end

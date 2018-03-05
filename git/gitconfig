@@ -8,6 +8,7 @@
   b = branch
   car = commit --amend --no-edit
   co = checkout
+  com = commit -m
   dc = diff --word-diff --color-words --cached
   df = diff --word-diff --color-words
   glog = log -E -i --grep

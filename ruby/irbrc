@@ -1,0 +1,27 @@
+require 'rubygems'
+require 'interactive_editor'
+require 'irb/completion'
+
+begin
+  require 'ap'
+rescue LoadError
+  system("gem install 'awesome_print' --no-ri --no-rdoc")
+  Gem.refresh
+  require 'ap'
+end
+
+IRB.conf[:AUTO_INDENT] = true
+IRB.conf[:USE_READLINE] = true
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+
+def clear
+  system('clear')
+end
+
+def doc(*names)
+  system("ri #{names.map(&:to_s).join(" ")}")
+end
+
+alias q exit
+
+puts "IRB enhanced with .irbrc configs!"

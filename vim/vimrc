@@ -1,7 +1,8 @@
 " remove all existing autocmds
 autocmd!
 
-set nocompatible              " be iMproved, required
+" be iMproved, required
+set nocompatible
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MANAGE PLUGINS
@@ -9,8 +10,6 @@ set nocompatible              " be iMproved, required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
 Plugin 'VundleVim/Vundle.vim'
 " display
 Plugin 'w0ng/vim-hybrid'
@@ -45,12 +44,15 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
 " misc
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired' " list of very useful mappings
 Plugin 'valloric/youcompleteme'
-Plugin 'raimondi/delimitmate'
+Plugin 'raimondi/delimitmate' " auto add close parenthesis, quotes, etc.
 call vundle#end()            " required
 
 filetype plugin indent on    " required
 runtime macros/matchit.vim
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -59,10 +61,10 @@ set nocompatible
 set hidden
 " remember more commands and search history
 set history=10000
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set expandtab " turn tab into spaces
+set tabstop=2 " width of tab
+set shiftwidth=2 " width using indentation command '>'
+set softtabstop=2 " make backspace behaving like inverse of tab, otherwise moves back one space
 set autoindent
 set laststatus=2
 set showmatch
@@ -160,33 +162,47 @@ set title
 if exists("&undodir")
 	set undodir=~/.vim/undo
 endif
-" Set automatic commands
+
+" Set autocommands if supported by the Vim installation
+" wrap all autocmd's insdide this block to avoid errors on versions of Vim
+" that do not support autocommands
 if has("autocmd")
   " Enable filetype detection
   filetype on
-  " Treat json files as js
-  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 
   " automatically rebalance windows on vim resize
   autocmd VimResized * :wincmd =
 endif
 
 nmap ; :
+" % normally represent the relative path of the current file
+" we can map %% to the directory of the current file
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+" open for edit a file from the same directory of the current file
+map <leader>ew :e %%
+" open in split mode a file from the same directory of the current file
+map <leader>es :sp %%
+" open in vertica split mode a file from the same directory of the current file
+map <leader>ev :vsp %%
+" open in a new tab a file from the same directory of the current file
+map <leader>et :tabe %%
+
 noremap <F9> :!%:p<CR>
 noremap <Leader>> :GitNextConflict<cr>
+" move forwards to next buffer
 noremap <Leader>f :bn<CR>
+" move backwards to previous buffer
 noremap <Leader>b :bp<CR>
+" list all open buffers
 noremap <Leader>l :ls<CR>
-noremap <Leader>1 :1b<CR>
-noremap <Leader>2 :2b<CR>
-noremap <Leader>3 :3b<CR>
-noremap <Leader>4 :4b<CR>
-noremap <Leader>5 :5b<CR>
-noremap <Leader>6 :6b<CR>
-noremap <Leader>7 :7b<CR>
-noremap <Leader>8 :8b<CR>
-noremap <Leader>9 :9b<CR>
-noremap <Leader>0 :0b<CR>
+" jump to numbered tab - consider using <D-1> :1gt<CR> which uses CMD-#
+noremap <Leader>1 1gt
+noremap <Leader>2 2gt
+noremap <Leader>3 3gt
+noremap <Leader>4 4gt
+noremap <Leader>5 5gt
+" jump to last tab
+noremap <Leader>0 :tablast<CR>
 
 " Move in quickfix list
 map <C-n> :cnext<CR>
@@ -204,6 +220,16 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+" Bubble single lines
+nmap <Space>k ddkP
+nmap <Space>j ddp
+" Bubble multiple lines
+vmap <Space>k xkP`[V`]
+vmap <Space>j xp`[V`]
+
+" use :Wrap to wrap lines
+command! -nargs=* Wrap set wrap linebreak nolist
+
 " Syntastic 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -218,17 +244,6 @@ let g:syntastic_ruby_rubocop_args = '-c ~/rubocop.yml --force-exclusion'
 let g:syntastic_ruby_flog_exec = '~/.rbenv/shims/flog'
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_jshint_args = '--config ~/.jshintrc'
-
-" Go
-let g:go_fmt_command = "goimports"
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-let g:go_metalinter_autosave = 1
 
 " Vim airline bar
 let g:airline#extensions#tabline#enabled = 1
@@ -249,7 +264,19 @@ let g:molokai_original = 1
 
 " Markdown
 let g:markdown_fenced_languages = ['html', 'ruby', 'bash=sh', 'go', 'javascript']
+" JSX
+let g:jsx_ext_required = 0
 
+" Go
+let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
@@ -260,11 +287,6 @@ function! s:build_go_files()
   endif
 endfunction
 
-" CtrlP ignores
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-
-" JSX
-let g:jsx_ext_required = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -277,6 +299,9 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 
+  " Automatically source .vimrc once saved
+  autocmd BufWritePost *vimrc source $MYVIMRC
+
   " Ruby
   autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
   autocmd FileType ruby,eruby nmap <leader>r :!ruby %<CR>
@@ -284,25 +309,23 @@ augroup vimrcEx
   autocmd FileType ruby,eruby nmap <leader>c :!flog % -a<CR>
 
   " Go
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
-  autocmd BufWritePost *.go :GoBuild
+  autocmd FileType go set sw=4 sts=4 et " set tab to 4 spaces
+  autocmd BufWritePost *.go :GoBuild " build when saving files
   autocmd FileType go nmap <leader>b  <Plug>(go-build)
   autocmd FileType go nmap <leader>r  <Plug>(go-run)
   autocmd FileType go nmap <leader>t  <Plug>(go-test)
   autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
   autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 
+  " Treat json files as js
+  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+
   " Python
   autocmd FileType python set sw=4 sts=4 et
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass 
 
-  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
-  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
-  autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:&gt;
-
-  " Don't syntax highlight markdown because it's often wrong
-  autocmd! FileType mkd setlocal syn=off
+  autocmd! FileType mkd setlocal syn=off " Don't syntax highlight markdown because it's often wrong
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -331,7 +354,9 @@ endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
 
-" ==================== UltiSnips ====================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UltiSnips - smart code snippets
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
  function! g:UltiSnips_Complete()
    call UltiSnips#ExpandSnippet()
    if g:ulti_expand_res == 0
@@ -356,7 +381,6 @@ inoremap <s-tab> <c-n>
    return ""
  endfunction
 
-
  if !exists("g:UltiSnipsJumpForwardTrigger")
    let g:UltiSnipsJumpForwardTrigger = "<tab>"
  endif
@@ -367,4 +391,3 @@ inoremap <s-tab> <c-n>
 
  au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
  au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
-
