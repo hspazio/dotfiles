@@ -15,6 +15,16 @@ AllCops:
 
 Metrics/LineLength:
   Max: 120
+Metrics/BlockLength:
+  Enabled: true
+  Exclude: 
+  - test/**/*
+  - rails/test/**/*
+Metrics/ClassLength:
+  Enabled: true
+  Exclude: 
+  - test/**/*
+  - rails/test/**/*
 Style/AsciiComments:
   Enabled: false
 Style/Documentation:
