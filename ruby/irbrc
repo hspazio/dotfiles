@@ -1,27 +1,29 @@
 require 'rubygems'
-require 'interactive_editor'
 require 'irb/completion'
 
-begin
-  require 'ap'
+def require_or_install(gem, as: gem)
+  require as
 rescue LoadError
-  system("gem install 'awesome_print' --no-ri --no-rdoc")
+  system "gem install '#{gem}' --no-ri --no-rdoc"
   Gem.refresh
-  require 'ap'
+  require as
 end
+
+require_or_install 'interactive_editor'
+require_or_install 'awesome_print', as: 'ap'
 
 IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:USE_READLINE] = true
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 
 def clear
-  system('clear')
+  system 'clear'
 end
 
 def doc(*names)
-  system("ri #{names.map(&:to_s).join(" ")}")
+  system "ri #{names.map(&:to_s).join(' ')}"
 end
 
 alias q exit
 
-puts "IRB enhanced with .irbrc configs!"
+puts 'IRB enhanced with .irbrc configs!'
