@@ -46,6 +46,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired' " list of very useful mappings
+Plugin 'tpope/vim-abolish' " easy search and replace + case coercion
 Plugin 'valloric/youcompleteme'
 Plugin 'raimondi/delimitmate' " auto add close parenthesis, quotes, etc.
 call vundle#end()            " required
@@ -69,7 +70,6 @@ set autoindent
 set laststatus=2
 set showmatch
 set incsearch
-" set hlsearch
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 " highlight current line
@@ -195,6 +195,8 @@ noremap <Leader>f :bn<CR>
 noremap <Leader>b :bp<CR>
 " list all open buffers
 noremap <Leader>l :ls<CR>
+" close current buffer
+noremap <Leader>q :bwipeout<CR>
 " jump to numbered tab - consider using <D-1> :1gt<CR> which uses CMD-#
 noremap <Leader>1 1gt
 noremap <Leader>2 2gt
