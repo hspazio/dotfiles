@@ -30,6 +30,21 @@ namespace :install do
     system %Q{ rm -rf fonts }
   end
 
+  desc "Install Neovim"
+  task :nvim do
+    puts "Installing Neovim"
+    system %Q{ brew install nvim }
+    system %Q{ mkdir -p ~/.config/nvim }
+
+    puts "Make Neovim reusing .vimrc and Vim plugins"
+    link_file(from: 'vim/nvim.init.vim', to: '.config/nvim/init.vim')
+
+    puts "installing python module required for YouCompleteMe plugin"
+    system %Q{ pip2 install --upgrade neovim }
+
+    system %Q{ nvim +checkhealth }
+  end
+
   desc "Install Brew packages"
   task :brew do
     puts "Installing Homebrew packages..."

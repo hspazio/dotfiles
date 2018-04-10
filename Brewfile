@@ -16,6 +16,7 @@ brew 'colordiff'
 
 # Vim
 brew 'vim', args: ['with-override-system-vi']
+brew 'nvim'
 
 # tools for Vim
 brew 'cmake'
