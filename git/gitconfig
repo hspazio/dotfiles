@@ -9,6 +9,7 @@
   car = commit --amend --no-edit
   co = checkout
   com = commit -m
+  po = !git push origin $(git rev-parse --abbrev-ref HEAD)
   dc = diff --word-diff --color-words --cached
   df = diff --word-diff --color-words
   glog = log -E -i --grep
