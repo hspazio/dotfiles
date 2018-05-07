@@ -9,13 +9,15 @@
   car = commit --amend --no-edit
   co = checkout
   com = commit -m
-  po = !git push origin $(git rev-parse --abbrev-ref HEAD)
+  pso = !git push origin $(git rev-parse --abbrev-ref HEAD)
+  plo = !git pull origin $(git rev-parse --abbrev-ref HEAD)
   dc = diff --word-diff --color-words --cached
   df = diff --word-diff --color-words
   glog = log -E -i --grep
   mup = !git checkout master && git pull && git checkout -
   s = status --short --branch
-  sla = log --oneline --decorate --graph --all
+  sla = log --oneline --decorate --graph --all -n 20
+  slaa = log --oneline --decorate --graph --all
   slog = log --pretty=format:'%C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(green)%an%C(reset) %s'
   uncommit = reset --soft HEAD^
   unstage = reset
