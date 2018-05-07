@@ -12,7 +12,8 @@ AllCops:
     - 'script/**/*'
     - 'bin/**/*'
     - Gemfile
-
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
 Metrics/LineLength:
   Max: 120
 Metrics/BlockLength:
@@ -35,6 +36,8 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Style/NumericLiterals:
   Enabled: false
+Style/NumericPredicate:
+  EnforcedStyle: comparison
 Style/SingleLineBlockParams:
   Enabled: false
 Style/TrailingBlankLines:
