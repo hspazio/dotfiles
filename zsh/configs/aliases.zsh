@@ -11,6 +11,16 @@ alias dku='dk up -d'
 alias dkd='dk down'
 alias dkclean='docker image prune -a && docker volume rm $(docker volume ls -qf dangling=true)'
 
+ack_rails() {
+  if [ $# -eq 2 ]; then
+    dir=$2
+  else
+    dir="."
+  fi
+  ack $1 $dir/lib $dir/app $dir/test
+}
+alias ackr=ack_rails
+
 count_class_references() {
   find app lib -iname '*.rb' | 
   xargs grep -h '^[[:space:]]*class\|module\b' | 
