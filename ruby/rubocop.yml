@@ -30,7 +30,7 @@ Style/AsciiComments:
   Enabled: false
 Style/Documentation:
   Enabled: false
-Style/EndOfLine:
+Layout/EndOfLine:
   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -40,13 +40,13 @@ Style/NumericPredicate:
   EnforcedStyle: comparison
 Style/SingleLineBlockParams:
   Enabled: false
-Style/TrailingBlankLines:
+Layout/TrailingBlankLines:
   Enabled: false   # I think we have seen this more annoying than useful
-Style/TrailingWhitespace:
+Layout/TrailingWhitespace:
   Enabled: false
 Style/GuardClause:
   Enabled: false
-Style/MultilineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   Enabled: false   # not working correctly, makes the code to look messy in certain scenarios
 Style/Lambda:
   Enabled: false   # new lambda syntax is always preferred over old one
