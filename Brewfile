@@ -13,6 +13,7 @@ brew 'zsh-completions'
 brew 'ack'
 brew 'the_silver_searcher'
 brew 'colordiff'
+brew 'reattach-to-user-namespace'
 
 # Vim
 brew 'vim', args: ['with-override-system-vi']

@@ -215,6 +215,13 @@ nnoremap <leader>a :cclose<CR>
 " copy/paste between vim instances
 vmap <leader>y :w! /tmp/vitmp<CR>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
+if has("clipboard")
+  set clipboard=unnamed " copy to system clipboard
+endif
+
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
 
 " Move around splits
 nnoremap <c-j> <c-w>j
